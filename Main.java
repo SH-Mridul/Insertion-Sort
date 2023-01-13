@@ -5,33 +5,26 @@ import java.util.Arrays;
 public class Main {
 
 	public static void main(String[] args) {
-		//int arr[] = {10,5,1,56,-1};
-		int arr[] = {1,2,3,4,5,6,7,8};
+		int arr[] = {8,3,7,5,2};
+		
 		insertionSort(arr);
 		System.out.println(Arrays.toString(arr));
 	}
 
 	static void insertionSort(int[] arr)
 	{
-		for(int i = 0; i<arr.length-1; i++)
+		for(int i = 1; i<arr.length; i++)
 		{
-			for(int j = i+1; j>0; j--)
+			int temp = arr[i]; // 5
+			int j = i-1; // 0
+			
+			while(j>-1 && temp<arr[j]) // 5<10 ---------> true
 			{
-				if(arr[j]<arr[j-1])
-				{
-					swap(arr,j,j-1);
-				}else {
-					break;
-				}
+				arr[j+1] = arr[j]; // arr[1] = 10
+				j--; // -1
 			}
+			
+			arr[j+1] = temp; // arr[0] = 5
 		}
-	}
-	
-	
-	public static void swap(int[] arr,int index, int smallIndex)
-	{
-		int temp = arr[index];
-		arr[index] = arr[smallIndex];
-		arr[smallIndex] = temp;
 	}
 }
